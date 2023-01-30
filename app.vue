@@ -128,7 +128,7 @@
     <div>
       <Products
         v-for="product in products"
-        :key="product.$id"
+        :key="product.id"
         :productName="product.productName"
         :productImage="product.productImage"
         :productPrice="product.productPrice"
@@ -178,6 +178,7 @@ export default {
       try {
         client.subscribe("documents", (response) => {
           console.log(response);
+          this.getPodcasts();
         });
       } catch (error) {
         console.log(error, "error");
@@ -224,6 +225,8 @@ export default {
         .catch((error) => {
           console.log(error);
         });
+
+      this.getProducts();
     },
 
     async getProducts() {

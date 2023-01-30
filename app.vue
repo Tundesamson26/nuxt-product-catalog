@@ -271,7 +271,8 @@ export default {
 
       this.products = products;
     },
-  },
+  }
+   
 };
 </script>
 

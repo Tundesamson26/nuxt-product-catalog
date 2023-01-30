@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.product-container {
+    margin-left: 37%;
+    width: 30%;
+}
+
+.cursor {
+    cursor: pointer;
+}

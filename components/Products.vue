@@ -20,7 +20,7 @@
               overflow-hidden
               xl:aspect-w-7 xl:aspect-h-8
             ">
-            <img src={{ productImage }}
+            <img :src="productImage"
               alt="Tall slender porcelain bottle with natural clay textured body and cork stopper." class="
                 w-full
                 h-full
@@ -44,12 +44,12 @@
               font-medium
               rounded-md
               text-white
-              bg-indigo-600
-              hover:bg-indigo-700
+              bg-fuchsia-600
+              hover:bg-fuchsia-700
               focus:outline-none
               focus:ring-2
               focus:ring-offset-2
-              focus:ring-indigo-500
+              focus:ring-fuchsia-500
             ">
             Delete
           </button>
@@ -63,8 +63,8 @@ export default {
   name: "Products",
   props: {
     productName: String,
-    productPrice: String,
-    producctImage: String,
+    productPrice: Number,
+    productImage: String,
   },
 };
 </script>

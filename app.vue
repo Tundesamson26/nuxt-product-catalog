@@ -147,7 +147,7 @@ client
   .setProject("63caf356633daedc90d6");
 
 const account = new Account(client);
-const database = new Databases(client);
+const databases = new Databases(client);
 const graphql = new Graphql(client);
 
 account.createAnonymousSession().then(
@@ -178,7 +178,7 @@ export default {
       try {
         client.subscribe("documents", (response) => {
           console.log(response);
-          this.getPodcasts();
+          this.getProducts();
         });
       } catch (error) {
         console.log(error, "error");
@@ -188,7 +188,7 @@ export default {
 
   methods: {
     async uploadProduct() {
-      await database.createDocument(
+      await databases.createDocument(
         "63caf4d3c63dfe21254e",
         "63ce7d8307846a399d7a",
         "unique()",
@@ -213,7 +213,7 @@ export default {
         }
     }`,
         variables: {
-          database,
+          databases,
           collectionId,
           documentId: ID.unique(),
         },
@@ -230,17 +230,12 @@ export default {
     },
 
     async getProducts() {
-      let products = [];
-
-      let productData = await database.listDocument(
+      let productData = await databases.listDocuments(
         "63caf4d3c63dfe21254e",
         "63ce7d8307846a399d7a"
       );
-      products.push({
-        productName: productData.documents[0].productName,
-        productImage: productData.documents[0].productImage,
-        productPrice: productData.documents[0].productPrice,
-      });
+      this.products = productData
+      console.log(this.products)
 
       const query = await graphql.query({
         query: `query ListDocument(
@@ -271,8 +266,6 @@ export default {
         .catch((error) => {
           console.log(error);
         });
-
-      this.products = products;
     },
   }
    

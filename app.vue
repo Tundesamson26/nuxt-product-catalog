@@ -126,13 +126,22 @@
       </form>
     </div>
     <div>
-      <Products
-        v-for="product in products"
+      <div class="
+          grid grid-cols-1
+          gap-y-10
+          sm:grid-cols-2
+          gap-x-6
+          lg:grid-cols-3
+          xl:grid-cols-4 xl:gap-x-8
+        ">
+        <Products
+        v-for="product in products.documents"
         :key="product.id"
         :productName="product.productName"
         :productImage="product.productImage"
         :productPrice="product.productPrice"
       />
+      </div>  
     </div>
   </div>
 </template>
@@ -143,8 +152,8 @@ import { Client, Account, Databases, Graphql } from "appwrite";
 const client = new Client();
 
 client
-  .setEndpoint("http://localhost/v1") // The Appwrite Endpoint
-  .setProject("63caf356633daedc90d6");
+    .setEndpoint('http://localhost/v1') //The Appwrite endpoint
+    .setProject('63e73b2f9012fecd3298'); // The Project_ID
 
 const account = new Account(client);
 const databases = new Databases(client);
@@ -189,8 +198,8 @@ export default {
   methods: {
     async uploadProduct() {
       await databases.createDocument(
-        "63caf4d3c63dfe21254e",
-        "63ce7d8307846a399d7a",
+        "63e73d2ddb77827e6c92",
+        "63e73d4278207419ad34",
         "unique()",
         {
           productName: this.productName,
@@ -231,8 +240,8 @@ export default {
 
     async getProducts() {
       let productData = await databases.listDocuments(
-        "63caf4d3c63dfe21254e",
-        "63ce7d8307846a399d7a"
+        "63e73d2ddb77827e6c92",
+        "63e73d4278207419ad34"
       );
       this.products = productData
       console.log(this.products)
@@ -243,8 +252,8 @@ export default {
         $collectionId: String!,
     ) {
         databasesListDocument(
-            databaseId: $63caf4d3c63dfe21254e,
-            collectionId: $63ce7d8307846a399d7a,
+            databaseId: $63e73d2ddb77827e6c92,
+            collectionId: $63e73d4278207419ad34,
         ) {
           total
           documents{

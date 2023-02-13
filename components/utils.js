@@ -1,6 +1,6 @@
 import { Client, Databases, Account, ID } from 'appwrite';
 
-const PROJECT_ID = "63caf356633daedc90d6";
+const PROJECT_ID = "63e73b2f9012fecd3298";
 const DATABASE_ID = "63caf4d3c63dfe21254e";
 const COLLECTION_ID = "63ce7d8307846a399d7a";
 
